@@ -1,0 +1,17 @@
+.filterWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.filterWrapper > input {
+    height: 30px;
+    width: 250px;
+    border-radius: 5px;
+    padding: 0px 10px;
+    border: 0 solid;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.filterWrapper > input:focus {
+    width: 270px;
+}

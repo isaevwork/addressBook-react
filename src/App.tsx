@@ -76,15 +76,18 @@
 //   );
 // }
 
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Users from "./components/Users/Users";
 import { User } from "./types/types";
 
 import "./styles/App.css";
 import Navbar from "./components/Navbar/Navbar";
+import Mymodal from "./components/MyModal/Mymodal";
 
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);
+  const [filterValue, setFilterValue] = useState<string>("");
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -92,10 +95,37 @@ const App = () => {
       .then((data) => setUsers(data));
   }, []);
 
+  const switchModal = () => {
+    setModalSwitcher((prev) => !prev);
+  };
+
+  const filterUser = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name } = e.target;
+    console.log(name);
+  };
+
+  const removeUser = (id: number) => {
+    const updatingUsersList = users.filter((user) => user.id !== id);
+    setFilterValue(updatingUsersList);
+  };
+
   return (
     <div className="App">
-      <Navbar />
-      <Users users={users} />
+      <Navbar
+        filterValue={filterValue}
+        filterUser={filterUser}
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      />
+      <Users users={users} removeUser={removeUser} />
+      {modalVisible === true ? (
+        <Mymodal
+          setModalVisible={setModalVisible}
+          modalVisible={modalVisible}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

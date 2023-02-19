@@ -1,10 +1,24 @@
-import React from "react";
+import { FC } from "react";
+import AddUser from "../AddUser/AddUser";
+import UserFilter from "../UserFilter/UserFilter";
 import "./Navbar.css";
 
-const Navbar = () => {
+interface NavbarProps {
+  filterValue: string;
+  filterUser: (value: string) => void;
+  modalVisible: boolean;
+  setModalVisible: (value: boolean) => void;
+}
+const Navbar: FC<NavbarProps> = ({
+  filterValue,
+  filterUser,
+  modalVisible,
+  setModalVisible,
+}) => {
   return (
     <div className="navbar">
-      <h1>Navbar</h1>
+      <UserFilter filterValue={filterValue} filterUser={filterUser} />
+      <AddUser modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </div>
   );
 };

@@ -1,0 +1,47 @@
+.myModalWrapper {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* display: none; */
+    background: rgba(198, 190, 190, 0.8)
+}
+
+.myModalContent {
+    margin-top: 100px;
+    height: 350px;
+    width: 500px;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+}
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.formWrapper input {
+    padding: 15px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 0 solid;
+    background:rgba(241, 241, 241, 0.8);
+}
+
+.formWrapper button {
+    margin-top: 20px;
+    padding: 15px;
+    border: 0 solid;
+    border-radius: 5px;
+    background:rgba(89, 202, 210, 0.8);
+    color:rgba(0, 0, 0, 0.993);
+    font-size: larger;
+    font-family: monospace;
+}
+.myModalWrapper.active {
+}

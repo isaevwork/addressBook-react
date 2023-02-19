@@ -1,0 +1,8 @@
+.UsersWrapper {
+    display:flex;
+    margin: auto;
+    width: 90%;
+    flex-wrap: wrap;
+    gap: 10px 5px;
+    padding: 20px 70px;
+}

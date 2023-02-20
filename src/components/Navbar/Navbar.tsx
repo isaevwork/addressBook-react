@@ -3,21 +3,20 @@ import AddUser from "../AddUser/AddUser";
 import UserFilter from "../UserFilter/UserFilter";
 import "./Navbar.css";
 
-interface NavbarProps {
-  filterValue: string;
-  filterUser: (value: string) => void;
+type NavbarProps = {
   modalVisible: boolean;
   setModalVisible: (value: boolean) => void;
+  setValue: (value: string) => void;
 }
-const Navbar: FC<NavbarProps> = ({
-  filterValue,
-  filterUser,
+
+const Navbar = ({
   modalVisible,
   setModalVisible,
-}) => {
+  setValue,
+}: NavbarProps) => {
   return (
     <div className="navbar">
-      <UserFilter filterValue={filterValue} filterUser={filterUser} />
+      <UserFilter setValue={setValue}/>
       <AddUser modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </div>
   );

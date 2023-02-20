@@ -2,18 +2,22 @@ import React, { FC } from "react";
 import "./UserFilter.css";
 
 interface UserFilterProps {
-  filterValue: string;
-  filterUser: (value: string) => void;
+  setValue: (value: string) => void;
 }
 
-const UserFilter: FC<UserFilterProps> = ({ filterValue, filterUser }) => {
+const UserFilter: FC<UserFilterProps> = ({ setValue }) => {
+  
+  const onChange = (e) => {
+    e.preventDefault();
+    setValue(e.currentTarget.value)
+  }
+  
   return (
     <div className="filterWrapper">
       <input
         type="text"
         placeholder="Искать..."
-        value={filterValue}
-        // onChange={(e) => filterUser()}
+        onChange={onChange}
       />
     </div>
   );

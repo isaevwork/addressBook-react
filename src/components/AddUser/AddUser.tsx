@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import AddUserIcon from "../../assets/ui/AddUserIcon";
 import "./AddUser.css";
 
 interface AddUserProps {
@@ -9,7 +10,9 @@ interface AddUserProps {
 const AddUser: FC<AddUserProps> = ({ modalVisible, setModalVisible }) => {
   return (
     <div className="addingContent">
-      <button onClick={() => setModalVisible(!modalVisible)}>ADD</button>
+      <button onClick={() => setModalVisible(!modalVisible)}>
+        <AddUserIcon />
+      </button>
     </div>
   );
 };

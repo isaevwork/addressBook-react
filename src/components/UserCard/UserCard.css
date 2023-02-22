@@ -1,13 +1,15 @@
 .mainContent {
-    display: flex;
-    justify-content: center;
+
 }
 
 .cardWrapper {
-    width: 260px;
-    height: 120px;
+    display: flex;
+    align-items: center;
+    width: 100%;
     background: rgb(245, 245, 245);
     border: 2px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 .cardWrapper:hover {
@@ -15,29 +17,32 @@
 }
 
 .cardContent {
-    padding: 5px;
+    display: flex;
+    width: 100%;
+}
+.nameCard {
+    padding-left: 25px;
+    width: 40%;
 }
 
-.cardSeparate {
-    flex-direction: column;
+.phoneNumberCard {
 }
 
-.buttonMenu {
-    padding: 5px;
+
+.buttonRemove {
 }
 
-.buttonMenu > button {
+.buttonRemove > button {
+    height: 100%;
     border: 0 solid;
     color: rgb(255, 255, 255);
     background:rgb(241, 116, 123);
-    padding: 5px 10px;
+    padding: 10px 10px;
     font-size: 12px;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
     cursor: pointer;
 }
 
-.buttonMenu > button:hover {
-    width: 80px;
-    height: 25px;
-    font-size: 14px;
+.buttonRemove > button:hover {
+    width: 70px;
 }

@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import RemoveUserIcon from "../../assets/ui/RemoveUserIcon";
 import { User } from "../../types/types";
 import "./UserCard.css";
 
@@ -15,27 +16,18 @@ const UserCard: FC<UserCardProps> = ({ user, removeUser }) => {
   return (
     <div className="cardWrapper">
       <div className="cardContent">
-        <div>
-          <span style={{ fontFamily: "monospace", fontSize: 14 }}>Name: </span>
+        <div className="nameCard">
+          <span style={{ fontFamily: "monospace", fontSize: 14 }}> </span>
           {user.name}
         </div>
-        <div>
-          <span style={{ fontFamily: "monospace", fontSize: 14 }}>
-            Username:{" "}
-          </span>
-          {user.username}
-        </div>
-        <div>
-          <span style={{ fontFamily: "monospace", fontSize: 14 }}>Email: </span>
-          {user.email}
-        </div>
-        <div>
-          <span style={{ fontFamily: "monospace", fontSize: 14 }}>City: </span>
-          {user.address.city}
+        <div className="phoneNumberCard">
+          <b>{user.phone}</b>
         </div>
       </div>
-      <div className="buttonMenu">
-        <button onClick={handleChange}>Удалить</button>
+      <div className="buttonRemove">
+        <button onClick={handleChange}>
+          <RemoveUserIcon />
+        </button>
       </div>
     </div>
   );

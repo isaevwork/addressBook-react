@@ -12,7 +12,7 @@
 
 .myModalContent {
     margin-top: 100px;
-    height: 350px;
+    height: 400px;
     width: 500px;
     padding: 25px;
     background: white;
@@ -38,7 +38,7 @@
     padding: 15px;
     border: 0 solid;
     border-radius: 5px;
-    background:rgba(89, 202, 210, 0.8);
+    background:#22bd93;
     color:rgba(0, 0, 0, 0.993);
     font-size: larger;
     font-family: monospace;

@@ -3,7 +3,7 @@ import React from "react";
 const SearchIcon = () => {
   return (
     <svg
-      enable-background="new 0 0 32 32"
+      enableBackground="new 0 0 32 32"
       width="25"
       height="25"
       id="Glyph"

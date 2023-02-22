@@ -6,7 +6,7 @@ interface UserFilterProps {
   setValue: (value: string) => void;
 }
 
-const UserFilter: FC<UserFilterProps> = ({ setValue }) => {
+const UserFilter = ({ setValue }: UserFilterProps) => {
   const onChange = (e) => {
     e.preventDefault();
     setValue(e.currentTarget.value);

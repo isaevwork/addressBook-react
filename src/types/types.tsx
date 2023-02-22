@@ -10,3 +10,5 @@ export interface User {
   email: string;
   adress: Adress;
 }
+
+export type OptionType = "name" | "phone";

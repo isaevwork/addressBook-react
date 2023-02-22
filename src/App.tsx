@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import Users from "./components/Users/Users";
-import { User } from "./types/types";
+import { OptionType, User } from "./types/types";
 
 import "./styles/App.css";
 import Navbar from "./components/Navbar/Navbar";
 import MyModal from "./components/MyModal/MyModal";
 
 const App = () => {
-  const [users, setUsers] = useState<User[]>([]); 
-  // const [filterValue, setFilterValue] = useState<string>("");
+  const [users, setUsers] = useState<User[]>([]);
+  const [optionType, setOptionType] = useState<OptionType>("name");
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -24,8 +24,11 @@ const App = () => {
   };
 
   const getFiltredUsers = (users: User[], searchValue: string) => {
-    return users.filter( user => user.name.includes(searchValue));
-  }
+    console.log([optionType]);
+    return users.filter((user) =>
+      String(user[optionType]).toLowerCase().includes(searchValue.toLowerCase())
+    );
+  };
 
   return (
     <div className="App">
@@ -33,12 +36,15 @@ const App = () => {
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
         setValue={setSearchValue}
+        optionType={optionType}
+        setOptionType={setOptionType}
       />
-      <Users users={getFiltredUsers(users, searchValue)} removeUser={removeUser} />
+      <Users
+        users={getFiltredUsers(users, searchValue)}
+        removeUser={removeUser}
+      />
       {modalVisible && ( // fix
-        <MyModal
-          setModalVisible={setModalVisible}
-        />
+        <MyModal setModalVisible={setModalVisible} />
       )}
     </div>
   );

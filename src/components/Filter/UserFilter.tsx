@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC } from "react";
 import SearchIcon from "../../assets/ui/SearchIcon";
 import "./UserFilter.css";
 
@@ -7,7 +7,7 @@ interface UserFilterProps {
 }
 
 const UserFilter = ({ setValue }: UserFilterProps) => {
-  const onChange = (e) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setValue(e.currentTarget.value);
   };

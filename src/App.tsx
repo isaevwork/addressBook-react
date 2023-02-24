@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Users from "./components/Users/Users";
 import { OptionType, User } from "./types/types";
 
@@ -20,13 +20,27 @@ const App = () => {
 
   const removeUser = (id: number) => {
     const updatingUsersList = users.filter((user) => user.id !== id);
-    setUsers(updatingUsersList); // fix
+    setUsers(updatingUsersList);
   };
 
   const getFiltredUsers = (users: User[], searchValue: string) => {
-    console.log([optionType]);
     return users.filter((user) =>
       String(user[optionType]).toLowerCase().includes(searchValue.toLowerCase())
+    );
+  };
+
+  const getSelectionText = (str: string, searchValue: string) => {
+    if (!searchValue) return str;
+    const i = str.toLowerCase().indexOf(searchValue);
+    const part1 = str.slice(0, i);
+    const part2 = str.slice(i, i + searchValue.length);
+    const part3 = str.slice(i + searchValue.length);
+    return (
+      <>
+        {part1}
+        <b>{part2}</b>
+        {part3}
+      </>
     );
   };
 
@@ -42,9 +56,15 @@ const App = () => {
       <Users
         users={getFiltredUsers(users, searchValue)}
         removeUser={removeUser}
+        getFiltredUsers={getFiltredUsers}
+        getSelectionText={getSelectionText}
       />
-      {modalVisible && ( // fix
-        <MyModal setModalVisible={setModalVisible} />
+      {modalVisible && (
+        <MyModal
+          setModalVisible={setModalVisible}
+          users={users}
+          setUsers={setUsers}
+        />
       )}
     </div>
   );

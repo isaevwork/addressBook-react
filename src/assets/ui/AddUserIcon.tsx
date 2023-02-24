@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddUsers = () => {
+const AddUserIcon = () => {
   return (
     <svg
       height="30px"
@@ -16,4 +16,4 @@ const AddUsers = () => {
   );
 };
 
-export default AddUsers;
+export default AddUserIcon;

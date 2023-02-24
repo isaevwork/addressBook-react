@@ -1,4 +1,3 @@
-import React, { FC } from "react";
 import RemoveUserIcon from "../../assets/ui/RemoveUserIcon";
 import { User } from "../../types/types";
 import "./UserCard.css";
@@ -9,24 +8,18 @@ interface UserCardProps {
   getSelectionText: (value: string) => void;
 }
 
-const UserCard: FC<UserCardProps> = ({
-  user,
-  removeUser,
-  getSelectionText,
-}) => {
+const UserCard = ({ user, removeUser, getSelectionText }: UserCardProps) => {
   const handleChange = () => {
-    console.log(user.id);
     removeUser(user.id);
   };
+
   return (
     <div className="cardWrapper">
       <div className="cardContent">
-        <div className="nameCard">
-          <span style={{ fontFamily: "monospace", fontSize: 14 }}> </span>
-          {getSelectionText(user.name) + "fdf"}
-        </div>
-        <div className="phoneNumberCard">{user.phone}</div>
+        <div className="nameCard">{getSelectionText(user.name)}</div>
+        <div className="phoneNumberCard">{getSelectionText(user.phone)}</div>
       </div>
+      <div className="emailNumberCard">{getSelectionText(user.email)}</div>
       <div className="buttonRemove">
         <button onClick={handleChange}>
           <RemoveUserIcon />

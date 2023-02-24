@@ -3,9 +3,8 @@ import { User } from "../../types/types";
 import "./MyModal.css";
 
 interface MyModalProps {
-  users: User[];
   setModalVisible: (value: boolean) => void;
-  setUsers: (value: User) => void;
+  addUser: (value: User) => void;
 }
 
 const MockUser = {
@@ -15,34 +14,45 @@ const MockUser = {
   email: "",
   adress: { city: "", street: "" },
 };
-const MyModal = ({ setModalVisible, users, setUsers }: MyModalProps) => {
-  const [user, setUser] = useState("");
+const MyModal = ({ setModalVisible, addUser }: MyModalProps) => {
+  const [user, setUser] = useState<User>(MockUser);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    setUser(e.target.value);
+    const { name, value } = e.target;
+    console.log("form", name, value);
+    // if (name === 'city' || name === 'street') {
+    //   setUser({
+    //   ...user,
+    //   adress: {
+    //     ...user.adress,
+    //     [name]: value
+    //   }
+    // })
+    //   return
+    // }
+    // setUser({
+    //   ...user,
+    //     [name]: value
+    // })
   };
 
-  const getNewUser = (users: User[], e: ChangeEvent<HTMLInputElement>) => {
+  const onAdd = (e: any) => {
     e.preventDefault();
-    return setUsers([...users, ...user]);
+    addUser({ ...user, id: Number(new Date()) });
+    setModalVisible(false);
   };
 
   return (
     <div className="myModalWrapper" onClick={() => setModalVisible(false)}>
-      <div className="myModalContent" onClick={(e) => e.stopPropagation()}>
-        <form className="formWrapper">
-          <input
-            type="text"
-            placeholder="Name"
-            value={user}
-            onChange={onChange}
-          />
-          <input type="text" placeholder="Username" onChange={onChange} />
-          <input type="text" placeholder="Email" onChange={onChange} />
-          <input type="text" placeholder="City" onChange={onChange} />
-          <input type="text" placeholder="Street" onChange={onChange} />
-          <button onClick={getNewUser}>Add User</button>
+      <div className="myModalContent" onClick={(e: any) => e.stopPropagation()}>
+        <form className="formWrapper" onChange={onChange}>
+          <input type="text" placeholder="Name" name="name" />
+          <input type="text" placeholder="phone" name="phone" />
+          <input type="text" placeholder="Email" name="email" />
+          <input type="text" placeholder="City" name="city" />
+          <input type="text" placeholder="Street" name="street" />
+          <button onClick={onAdd}>Add User</button>
         </form>
       </div>
     </div>

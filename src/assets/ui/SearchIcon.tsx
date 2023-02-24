@@ -6,7 +6,7 @@ const SearchIcon = () => {
       enableBackground="new 0 0 32 32"
       width="25"
       height="25"
-      id="Glyph"
+      opacity="60%"
       version="1.1"
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"

@@ -6,18 +6,14 @@ import "./Users.css";
 
 interface UserProps {
   users: User[];
-  value: string;
   removeUser: (value: number) => void;
   getSelectionText: (value: string) => void;
-  getFiltredUsers: (users: User[], value: string) => void;
 }
 
 const Users = ({
   users,
-  value,
   removeUser,
   getSelectionText,
-  getFiltredUsers,
 }: UserProps) => {
   return (
     <div className="UsersWrapper">

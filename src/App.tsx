@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import Users from "./components/Users/Users";
 import { OptionType, User } from "./types/types";
 
@@ -12,37 +12,42 @@ const App = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
+  const addUser = (user: User) => {
+    setUsers([...users, user]);
+  };
 
   const removeUser = (id: number) => {
     const updatingUsersList = users.filter((user) => user.id !== id);
     setUsers(updatingUsersList);
   };
 
-  const getFiltredUsers = (users: User[], searchValue: string) => {
+  const getFiltredUsers = (users: User[], searchValue: string): User[] => {
     return users.filter((user) =>
       String(user[optionType]).toLowerCase().includes(searchValue.toLowerCase())
     );
   };
 
-  const getSelectionText = (str: string, searchValue: string) => {
-    if (!searchValue) return str;
+  const getSelectionText = (str: string): JSX.Element | string => {
+    // console.log(str);
+    // if (!searchValue) return str;
     const i = str.toLowerCase().indexOf(searchValue);
-    const part1 = str.slice(0, i);
-    const part2 = str.slice(i, i + searchValue.length);
-    const part3 = str.slice(i + searchValue.length);
+    const start = str.slice(0, i);
+    const requiredValue = str.slice(i, i + searchValue.length);
+    const end = str.slice(i + searchValue.length);
     return (
       <>
-        {part1}
-        <b>{part2}</b>
-        {part3}
+        {start}
+        <b>{requiredValue}</b>
+        {end}
       </>
     );
   };
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
 
   return (
     <div className="App">
@@ -50,21 +55,17 @@ const App = () => {
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
         setValue={setSearchValue}
+        searchValue={searchValue}
         optionType={optionType}
         setOptionType={setOptionType}
       />
       <Users
         users={getFiltredUsers(users, searchValue)}
         removeUser={removeUser}
-        getFiltredUsers={getFiltredUsers}
         getSelectionText={getSelectionText}
       />
       {modalVisible && (
-        <MyModal
-          setModalVisible={setModalVisible}
-          users={users}
-          setUsers={setUsers}
-        />
+        <MyModal setModalVisible={setModalVisible} addUser={addUser} />
       )}
     </div>
   );

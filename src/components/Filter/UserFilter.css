@@ -6,23 +6,44 @@
 
 .filterWrapper > input {
     height: 35px;
-    width: 300px;
+    width: 320px;
     border-radius: 8px 0 0 8px;
-    padding: 0px 10px;
+    padding: 0px 35px;
     border: 0 solid;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+    outline: none;
 }
 
-.iconWrapper {
+.searchIcon {
     position: absolute;
-    right: 0;
-    padding: 2px;
-    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    left: 0;
+    padding-left: 5px;
     background: white;
-    opacity: 50%;
+}
+
+.clearIcon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 0;
+    padding: 4px;
+    margin-right: 5px;
+    outline: none;
+    border: 0 solid;
+    cursor: pointer;
+    background: #EFEFEF;
+    border-radius: 50px;
+    fill: white;
+}
+
+
+.clearIcon:hover {
+    background: rgba(150, 150, 150, 0.82);
+    border-radius: 50px;
 }
 
 .filterWrapper > input:focus {
-    width: 320px;
+    /* width: 330px; */
 }

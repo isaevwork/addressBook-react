@@ -18,18 +18,26 @@
 
 .cardContent {
     display: flex;
-    width: 100%;
+    align-items: center;
+    width: 90%;
 }
 .nameCard {
     padding-left: 25px;
-    width: 40%;
+    width: 50%;
 }
 
 .phoneNumberCard {
+    width: 50%;
 }
 
+.emailNumberCard {
+    width: 50%;
+    font-size: 14px;
+    padding-right: 10px;
+}
 
 .buttonRemove {
+    height: 100%;
 }
 
 .buttonRemove > button {

@@ -11,4 +11,4 @@ export interface User {
   adress: Adress;
 }
 
-export type OptionType = "name" | "phone";
+export type OptionType = "name" | "phone" | "email";

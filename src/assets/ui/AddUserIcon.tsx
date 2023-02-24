@@ -3,10 +3,10 @@ import React from "react";
 const AddUserIcon = () => {
   return (
     <svg
-      height="30px"
+      height="25px"
       fill="white"
-      viewBox="0 0 24 24"
-      width="30px"
+      viewBox="0 0 22 23"
+      width="25px"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M9,14c1.381,0,2.631-0.56,3.536-1.465C13.44,11.631,14,10.381,14,9s-0.56-2.631-1.464-3.535C11.631,4.56,10.381,4,9,4  S6.369,4.56,5.464,5.465C4.56,6.369,4,7.619,4,9s0.56,2.631,1.464,3.535C6.369,13.44,7.619,14,9,14z" />

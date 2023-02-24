@@ -2,7 +2,7 @@ import React from "react";
 import { OptionType } from "../../types/types";
 import "./FilterList.css";
 
-const optionList: OptionType[] = ["name", "phone"];
+const optionList: OptionType[] = ["name", "phone", "email"];
 
 type FilterListProps = {
   optionType?: string;

@@ -1,7 +1,3 @@
-.mainContent {
-
-}
-
 .cardWrapper {
     display: flex;
     align-items: center;
@@ -13,7 +9,7 @@
 }
 
 .cardWrapper:hover {
-    background:rgb(232, 249, 253)
+    background:rgba(232, 232, 232, 0.716)
 }
 
 .cardContent {
@@ -22,7 +18,7 @@
     width: 90%;
 }
 .nameCard {
-    padding-left: 25px;
+    padding-left: 14px;
     width: 50%;
 }
 

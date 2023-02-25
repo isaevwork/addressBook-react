@@ -5,15 +5,10 @@ import "./UserFilter.css";
 
 interface UserFilterProps {
   setValue: (value: string) => void;
-  setSearchValue: (value: string) => void;
   searchValue: string;
 }
 
-const UserFilter = ({
-  setValue,
-  setSearchValue,
-  searchValue,
-}: UserFilterProps) => {
+const UserFilter = ({ setValue, searchValue }: UserFilterProps) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setValue(e.currentTarget.value);

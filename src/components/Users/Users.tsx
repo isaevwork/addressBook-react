@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import Checkbox from "../../assets/ui/Checkbox/Checkbox";
 import { User } from "../../types/types";
 import UserCard from "../UserCard/UserCard";
 
@@ -10,11 +11,7 @@ interface UserProps {
   getSelectionText: (value: string) => void;
 }
 
-const Users = ({
-  users,
-  removeUser,
-  getSelectionText,
-}: UserProps) => {
+const Users = ({ users, removeUser, getSelectionText }: UserProps) => {
   return (
     <div className="UsersWrapper">
       {users.map((user) => (

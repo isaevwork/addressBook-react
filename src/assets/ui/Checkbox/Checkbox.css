@@ -1,0 +1,39 @@
+.checkboxContainerFalse {
+    display: flex;
+    height: 100%;
+}
+
+.checkboxStyle {
+    cursor: pointer;
+    opacity: 0%;
+    position: absolute;
+}
+
+
+.checkboxContainerFalse::after {
+    content: "";
+    width: 30px;
+    z-index: 1;
+    border-radius: 15px 0 0 15px;
+    border: 0.1px solid #e6e6e6;
+    background: rgba(255, 255, 255, 0.431);
+}
+
+
+
+.checkboxContainerTrue {
+    display: flex;
+    height: 100%;
+}
+
+.checkboxContainerTrue::after {
+    content: "";
+    background: #24bd9497;
+    width: 30px;
+    z-index: 1;
+    border-radius: 15px 0 0 15px;
+    border: 0.1px solid rgba(121, 121, 121, 0);
+}
+
+
+

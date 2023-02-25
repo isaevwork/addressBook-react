@@ -28,7 +28,6 @@ const App = () => {
   };
 
   const getSelectionText = (str: string): JSX.Element | string => {
-    // console.log(str);
     // if (!searchValue) return str;
     const i = str.toLowerCase().indexOf(searchValue);
     const start = str.slice(0, i);

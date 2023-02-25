@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Checkbox from "../../assets/ui/Checkbox/Checkbox";
 import RemoveUserIcon from "../../assets/ui/RemoveUserIcon";
 import { User } from "../../types/types";
 import "./UserCard.css";
@@ -9,12 +11,21 @@ interface UserCardProps {
 }
 
 const UserCard = ({ user, removeUser, getSelectionText }: UserCardProps) => {
+  const [checked, setChecked] = useState<boolean>(false);
+
   const handleChange = () => {
     removeUser(user.id);
   };
 
+  const onChangeCheckbox = () => {
+    setChecked(!checked);
+    console.log(checked);
+  };
+
   return (
     <div className="cardWrapper">
+      <Checkbox onChangeCheckbox={onChangeCheckbox} checked={checked} />
+
       <div className="cardContent">
         <div className="nameCard">{getSelectionText(user.name)}</div>
         <div className="phoneNumberCard">{getSelectionText(user.phone)}</div>

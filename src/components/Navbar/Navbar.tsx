@@ -11,7 +11,6 @@ type NavbarProps = {
   searchValue: string;
   optionType?: string;
   setOptionType: (value: OptionType) => void;
-  setSearchValue: (value: string) => void;
 };
 
 const Navbar = ({
@@ -21,15 +20,10 @@ const Navbar = ({
   searchValue,
   optionType,
   setOptionType,
-  setSearchValue,
 }: NavbarProps) => {
   return (
     <div className="navbar">
-      <UserFilter
-        setValue={setValue}
-        setSearchValue={setSearchValue}
-        searchValue={searchValue}
-      />
+      <UserFilter setValue={setValue} searchValue={searchValue} />
       <FilterList optionType={optionType} setOptionType={setOptionType} />
       <AddUser modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </div>

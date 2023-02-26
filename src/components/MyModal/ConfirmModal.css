@@ -1,0 +1,52 @@
+.modalWrapper {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(198, 190, 190, 0.8);
+}
+
+.modalContent {
+    margin-top: 100px;
+    width: 350px;
+    height: 100px;
+    border-radius: 15px;
+    padding: 10px;
+    background: rgb(237, 93, 93);
+    color: rgb(242, 242, 242);
+    font-size: large;
+}
+
+.modalContent span {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.modalButton {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-around;
+}
+
+.modalButton button {
+    outline: none;
+    width: 100px;
+    padding: 5px;
+    border: 0 solid;
+    border-radius: 15px;
+    background: rgba(225, 222, 222, 0.802);
+    color: rgba(49, 49, 49, 0.8);
+    font-size: medium;
+    font-weight: 500;
+}
+
+.modalButton button:active {
+    background: rgba(57, 57, 57, 0.802);
+    color: rgba(239, 239, 239, 0.8);
+    
+}

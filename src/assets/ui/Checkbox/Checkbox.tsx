@@ -1,29 +1,32 @@
-import React, { ChangeEvent } from "react";
+import classNames from "classnames";
 import "./Checkbox.css";
 
 type CheckboxProps = {
-  onChangeCheckbox: (value: boolean) => void;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  id: number;
+  onChangeCheckbox?: (value: boolean) => void | undefined;
+  addSelectAll: (value: boolean) => void;
   checked: boolean;
+  selectedAll: boolean;
 };
 const Checkbox = ({
   onChangeCheckbox,
-  onChange,
-  id,
   checked,
+  addSelectAll,
+  selectedAll,
 }: CheckboxProps) => {
   return (
     <>
-      {checked ? (
-        <div className="checkboxContainerFalse" onClick={onChangeCheckbox}>
-          <input type="checkbox" className="checkboxStyle" />
-        </div>
-      ) : (
-        <div className="checkboxContainerTrue" onClick={onChangeCheckbox}>
-          <input type="checkbox" className="checkboxStyle" />
-        </div>
-      )}
+      <div
+        className={`${
+          !checked ? "checkboxContainerFalse" : "checkboxContainerTrue"
+        }`}
+        onClick={onChangeCheckbox}
+      ></div>
+      <div
+        className={`${
+          !selectedAll ? "checkboxContainerFalse" : "checkboxContainerTrue"
+        }`}
+        onClick={addSelectAll}
+      ></div>
     </>
   );
 };

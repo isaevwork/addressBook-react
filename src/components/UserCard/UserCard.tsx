@@ -6,11 +6,19 @@ import "./UserCard.css";
 
 interface UserCardProps {
   user: User;
+  selectedAll: boolean;
   removeUser: (value: number) => void;
   getSelectionText: (value: string) => void;
+  addSelectAll: (value: boolean) => void;
 }
 
-const UserCard = ({ user, removeUser, getSelectionText }: UserCardProps) => {
+const UserCard = ({
+  user,
+  removeUser,
+  getSelectionText,
+  addSelectAll,
+  selectedAll,
+}: UserCardProps) => {
   const [checked, setChecked] = useState<boolean>(false);
 
   const handleChange = () => {
@@ -19,12 +27,16 @@ const UserCard = ({ user, removeUser, getSelectionText }: UserCardProps) => {
 
   const onChangeCheckbox = () => {
     setChecked(!checked);
-    console.log(checked);
   };
 
   return (
     <div className="cardWrapper">
-      <Checkbox onChangeCheckbox={onChangeCheckbox} checked={checked} />
+      <Checkbox
+        onChangeCheckbox={onChangeCheckbox}
+        checked={checked}
+        addSelectAll={addSelectAll}
+        selectedAll={selectedAll}
+      />
 
       <div className="cardContent">
         <div className="nameCard">{getSelectionText(user.name)}</div>

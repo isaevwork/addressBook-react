@@ -5,11 +5,13 @@ import { OptionType, User } from "./types/types";
 import "./styles/App.css";
 import Navbar from "./components/Navbar/Navbar";
 import MyModal from "./components/MyModal/MyModal";
+import ConfirmModal from "./components/MyModal/ConfirmModal";
 
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [optionType, setOptionType] = useState<OptionType>("name");
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [isModalConfirm, setIsModalConfirm] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
 
   const addUser = (user: User) => {
@@ -28,7 +30,7 @@ const App = () => {
   };
 
   const getSelectionText = (str: string): JSX.Element | string => {
-    // if (!searchValue) return str;
+    if (!searchValue) return str;
     const i = str.toLowerCase().indexOf(searchValue);
     const start = str.slice(0, i);
     const requiredValue = str.slice(i, i + searchValue.length);
@@ -59,12 +61,20 @@ const App = () => {
         setOptionType={setOptionType}
       />
       <Users
+        isModalConfirm={isModalConfirm}
+        setIsModalConfirm={setIsModalConfirm}
         users={getFiltredUsers(users, searchValue)}
         removeUser={removeUser}
         getSelectionText={getSelectionText}
       />
       {modalVisible && (
         <MyModal setModalVisible={setModalVisible} addUser={addUser} />
+      )}
+      {isModalConfirm && (
+        <ConfirmModal
+          isModalConfirm={isModalConfirm}
+          setIsModalConfirm={setIsModalConfirm}
+        />
       )}
     </div>
   );

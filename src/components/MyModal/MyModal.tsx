@@ -21,20 +21,20 @@ const MyModal = ({ setModalVisible, addUser }: MyModalProps) => {
     e.preventDefault();
     const { name, value } = e.target;
     console.log("form", name, value);
-    // if (name === 'city' || name === 'street') {
-    //   setUser({
-    //   ...user,
-    //   adress: {
-    //     ...user.adress,
-    //     [name]: value
-    //   }
-    // })
-    //   return
-    // }
-    // setUser({
-    //   ...user,
-    //     [name]: value
-    // })
+    if (name === "city" || name === "street") {
+      setUser({
+        ...user,
+        adress: {
+          ...user.adress,
+          [name]: value,
+        },
+      });
+      return;
+    }
+    setUser({
+      ...user,
+      [name]: value,
+    });
   };
 
   const onAdd = (e: any) => {

@@ -8,24 +8,20 @@ import "./Users.css";
 
 interface UserProps {
   users: User[];
-  checked: boolean;
   removeUser: (value: number) => void;
-  getSelectionText: (value: string) => void;
-  onChangeCheckbox?: (value: boolean) => void;
-  setChecked: (value: boolean) => void;
+  getSelectionText: (value: string, type: string) => JSX.Element | string;
   setIsModalConfirm: (value: boolean) => void;
   isModalConfirm: boolean;
+  selectIdUser: (id: number, type?: string) => void;
 }
 
 const Users = ({
   users,
   removeUser,
   getSelectionText,
-  setChecked,
-  checked,
-  onChangeCheckbox,
   isModalConfirm,
   setIsModalConfirm,
+  selectIdUser,
 }: UserProps) => {
   const [selectedAll, setSelectedAll] = useState<boolean>(false);
 
@@ -38,11 +34,8 @@ const Users = ({
       <OptionMenu
         isModalConfirm={isModalConfirm}
         setIsModalConfirm={setIsModalConfirm}
-        users={users}
         selectedAll={selectedAll}
         addSelectAll={addSelectAll}
-        checked={checked}
-        removeUser={removeUser}
       />
       {users.map((user) => (
         <UserCard
@@ -50,8 +43,8 @@ const Users = ({
           key={user.id}
           removeUser={removeUser}
           getSelectionText={getSelectionText}
-          addSelectAll={addSelectAll}
           selectedAll={selectedAll}
+          selectIdUser={selectIdUser}
         />
       ))}
     </div>

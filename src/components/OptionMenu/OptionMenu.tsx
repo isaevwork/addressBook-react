@@ -4,10 +4,7 @@ import "./OptionMenu.css";
 
 type OptionMenuProps = {
   selectedAll: boolean;
-  checked: boolean;
   addSelectAll: (value: boolean) => void;
-  removeUser: (value: number) => void;
-  user: User;
   setIsModalConfirm: (value: boolean) => void;
   isModalConfirm: boolean;
 };
@@ -17,9 +14,6 @@ const OptionMenu = ({
   setIsModalConfirm,
   selectedAll,
   addSelectAll,
-  checked,
-  removeUser,
-  user,
 }: OptionMenuProps) => {
   return (
     <div className="optionMenuWrapper">

@@ -13,6 +13,7 @@ const App = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isModalConfirm, setIsModalConfirm] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>("");
+  const [selectedIdUsers, setSelectedIdUsers] = useState<number[]>([]);
 
   const addUser = (user: User) => {
     setUsers([...users, user]);
@@ -23,25 +24,47 @@ const App = () => {
     setUsers(updatingUsersList);
   };
 
+  const selectIdUser = (id: number, type?: string) => {
+    console.log('selectIdUser', id, type)
+    if (type === 'select') {
+      console.log('selectIdUser', id)
+      setSelectedIdUsers([...selectedIdUsers, id])
+    } else {
+      const ids = selectedIdUsers.filter(index => index !== id)
+      setSelectedIdUsers(ids)
+    }
+  }
+
+  const removeUsers = () => {
+    const newUsers = users.filter(user => !selectedIdUsers.includes(user.id))
+    setUsers(newUsers)
+    setIsModalConfirm(false)
+  }
+
   const getFiltredUsers = (users: User[], searchValue: string): User[] => {
     return users.filter((user) =>
       String(user[optionType]).toLowerCase().includes(searchValue.toLowerCase())
     );
   };
 
-  const getSelectionText = (str: string): JSX.Element | string => {
+  const getSelectionText = (str: string, type: string): JSX.Element | string => {
     if (!searchValue) return str;
-    const i = str.toLowerCase().indexOf(searchValue);
-    const start = str.slice(0, i);
-    const requiredValue = str.slice(i, i + searchValue.length);
-    const end = str.slice(i + searchValue.length);
-    return (
-      <>
-        {start}
-        <b>{requiredValue}</b>
-        {end}
-      </>
-    );
+
+    if (type === optionType) {
+      const i = str.toLowerCase().indexOf(searchValue);
+      const start = str.slice(0, i);
+      const requiredValue = str.slice(i, i + searchValue.length);
+      const end = str.slice(i + searchValue.length);
+      return (
+        <>
+          {start}
+          <b>{requiredValue}</b>
+          {end}
+        </>
+      );
+    }
+
+    return str
   };
 
   useEffect(() => {
@@ -49,6 +72,7 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
+
 
   return (
     <div className="App">
@@ -66,6 +90,7 @@ const App = () => {
         users={getFiltredUsers(users, searchValue)}
         removeUser={removeUser}
         getSelectionText={getSelectionText}
+        selectIdUser={selectIdUser}
       />
       {modalVisible && (
         <MyModal setModalVisible={setModalVisible} addUser={addUser} />
@@ -74,6 +99,7 @@ const App = () => {
         <ConfirmModal
           isModalConfirm={isModalConfirm}
           setIsModalConfirm={setIsModalConfirm}
+          removeUsers={removeUsers}
         />
       )}
     </div>
